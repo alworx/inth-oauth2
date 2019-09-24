@@ -159,7 +159,12 @@ extern crate lazy_static;
 extern crate serde_derive;
 
 extern crate chrono;
-extern crate reqwest;
+
+#[cfg(feature = "default-tls")]
+extern crate reqwest_default_tls as reqwest;
+#[cfg(feature = "rustls-tls")]
+extern crate reqwest_rustls_tls as reqwest;
+
 extern crate serde_json;
 extern crate url;
 

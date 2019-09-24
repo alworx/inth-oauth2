@@ -11,6 +11,12 @@ license = "ISC"
 repository = "https://github.com/programble/inth-oauth2"
 readme = "README.md"
 
+[features]
+default = ["default-tls"]
+
+default-tls = ["reqwest-default-tls"]
+rustls-tls = ["reqwest-rustls-tls"]
+
 [dependencies]
 chrono = { version = "0.4", features = ["serde"] }
 lazy_static = "1.1.0"
@@ -18,4 +24,6 @@ serde = "1.0.8"
 serde_derive = "1.0.5"
 serde_json = "1.0.2"
 url = "1.1.0"
-reqwest = "0.9.2"
+
+reqwest-default-tls = { package = "reqwest", version = "0.9.2", optional = true }
+reqwest-rustls-tls  = { package = "reqwest", version = "0.9.2", default-features = false, features = ["rustls-tls"], optional = true }
